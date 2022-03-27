@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BatBin</title>
+    <link rel="icon" type="image/x-icon" href="/public/assets/BAT-BIN-SQ.png">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-dark.min.css"
+      integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"
+      integrity="sha512-BNc7saQYlxCL10lykUYhFBcnzdKMnjx5fp5s5wPucDyZ7rKNwCoqJh1GwEAIhuePEK4WM9askJBRsu7ma0Rzvg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <%- include("_buttons.ejs", {id: locals.id}) %>
+    <div class="wrapper">
+      <div class="line-numbers">
+        <% for (let index = 1; index <= lineNumbers; index++) { %>
+        <div><%= index %></div>
+        <% } %>
+      </div>
+      <pre><code id="code-display" class="<%= locals.language ? `language-${locals.language}` : "" %>"><%= code %></code></pre>
+    </div>
+  </body>
+</html>
