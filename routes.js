@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+const authenticate = require("./middlewares/middleware");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -54,8 +54,28 @@ router.get("/:id", async (req, res) => {
       lineNumbers: code.split("\n").length,
     });
   } catch (error) {
-    res.redirect("/")
+    res.redirect("/");
   }
 });
 
+router.delete("/:id", authenticate, async (req, res) => {
+  const id = req.params.id;
+  try {
+    const document = await Document.findByIdAndDelete(id);
+    res.send({ message: "Document deleted.", document });
+  } catch (error) {
+    console.error(error);
+    res.send({ error: error.message });
+  }
+});
+
+router.delete("/", authenticate, async (req, res) => {
+  try {
+    const document = await Document.deleteMany();
+    res.send({ message: "Document deleted.", document });
+  } catch (error) {
+    console.error(error);
+    res.send({ error: error.message });
+  }
+});
 module.exports = router;
