@@ -3,16 +3,17 @@ const authenticate = require("./middlewares/middleware");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const code = `Welcome to BatBin!
+  res.redirect("/new");
+  //   const code = `Welcome to BatBin!
 
-Use the commands in the top right corner
-to create a new file to share with others.`;
+  // Use the commands in the top right corner
+  // to create a new file to share with others.`;
 
-  res.render("index", {
-    code,
-    lineNumbers: code.split("\n").length,
-    language: "plaintext",
-  });
+  //   res.render("index", {
+  //     code,
+  //     lineNumbers: code.split("\n").length,
+  //     language: "plaintext",
+  //   });
 });
 
 router.get("/new", (req, res) => {
