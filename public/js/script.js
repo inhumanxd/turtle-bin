@@ -25,3 +25,17 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+
+const copyUrl = () => {
+  toastr.options.closeButton = true;
+  toastr.options.preventDuplicates = true;
+  toastr.options.positionClass = "toast-bottom-full-width";
+  let dummy = document.createElement("input"),
+    text = window.location.href;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  toastr.success("Url has been copied to your clipboard!");
+};
