@@ -19,11 +19,12 @@
       <%- include("_buttons.ejs", {canSave: true}) %>
       <div class="wrapper">
         <div class="line-numbers">&gt;</div>
-        <textarea autofocus name="value" rows="50"><%= locals.value %></textarea>
+        <textarea autofocus name="value" rows="50" id="text"><%= locals.value %></textarea>
       </div>
     </form>
     <script>
       autosize(document.querySelector("textarea"));
-    </script>
+    </script> 
+    <script src="js/script.js"></script>
   </body>
 </html>
