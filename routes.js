@@ -23,6 +23,7 @@ router.get("/new", (req, res) => {
 const Document = require("./models/Document");
 router.post("/save", async (req, res) => {
   const value = req.body.value;
+  if (!value) res.redirect("/new");
   try {
     const document = await Document.create({ value });
     res.redirect(`/${document.id}`);
